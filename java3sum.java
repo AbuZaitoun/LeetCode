@@ -3,8 +3,8 @@ class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> toReturn = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
-            for (int j = 0; j < nums.length; j++) {
-                for (int k = 0; k < nums.length; k++) {
+            for (int j = i; j < nums.length; j++) {
+                for (int k = j; k < nums.length; k++) {
                     if ((nums[i] + nums[j] + nums[k] == 0) && i != j && i != k && j != k) {
                         // System.out.println(nums[i] + " " + nums[j] + " " + nums[k]);
                         int[] array = {nums[i], nums[j], nums[k]};
@@ -42,9 +42,10 @@ class Solution {
     }
     private boolean areTheSame(int[] nums1, int[] nums2) {
         boolean result = false;
-        for (index = 0; index < nums1.length; index++) {
-            if (!IntStream.of(nums2).anyMatch(x -> x == nums1[index])) return false;
-        }
-        return true;
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        
+        return Arrays.equals(nums1, nums2);
+
     }
 }
