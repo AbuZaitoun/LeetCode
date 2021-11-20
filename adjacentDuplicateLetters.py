@@ -4,7 +4,7 @@ class Solution:
         copy = s
         while True:
             for character in s: 
-                toReturn = toReturn.replace(str(character)+str(character), "")
+                toReturn = toReturn.replace(str(character)*2, "")
 
             if copy == toReturn:
                 return toReturn 
