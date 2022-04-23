@@ -4,15 +4,20 @@ from typing import List
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         toReturn = ""
-        minIndex = strs.index(min(strs, key=len))
+        # Get shortest word
+        shortestWord = min(strs, key=len)
 
+        # Return word if array has one item
         if len(strs) == 1:
             return strs[0]
 
-        for i in range(len(strs[minIndex])):
-
-            if all(list(map( lambda x: x.startswith(strs[minIndex][0:i+1]), strs))):
-                toReturn = strs[minIndex][0:i+1]
+        # Go through the letters of the shortest word
+        for i in range(len(shortestWord)):
+            
+            # If all words in strs start with sub-array 0:i+1 from shortest word, update to return and go next
+            if all(list(ma9p( lambda x: x.startswith(shortestWord[0:i+1]), strs))):
+                toReturn = shortestWord[0:i+1]
+            # Else, break and return what we have
             else:
                 break
 
